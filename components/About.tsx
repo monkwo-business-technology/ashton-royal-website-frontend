@@ -52,7 +52,7 @@ export function About() {
                   (t) => (
                     <span
                       key={t}
-                      className="rounded-full border border-blue-700/15 bg-white/50 px-4 py-2 text-sm font-medium text-blue-800 backdrop-blur"
+                      className="rounded-full border border-blue-700/15 bg-white/50 px-4 py-2 text-sm font-medium text-blue-800 backdrop-blur dark:bg-white/[0.06]"
                     >
                       {t}
                     </span>

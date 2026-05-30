@@ -26,7 +26,7 @@ export function Hero() {
             variants={fadeUp}
             initial="hidden"
             animate="show"
-            className="eyebrow inline-flex items-center gap-2 rounded-full border border-orange-400/40 bg-white/40 px-4 py-1.5 text-orange-600 backdrop-blur"
+            className="eyebrow inline-flex items-center gap-2 rounded-full border border-orange-400/40 bg-white/40 px-4 py-1.5 text-orange-600 backdrop-blur dark:bg-white/[0.06]"
           >
             <span className="h-1.5 w-1.5 rounded-full bg-orange-500" />
             Empowering Lives, Fostering Community

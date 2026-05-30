@@ -12,8 +12,8 @@ export function Footer() {
           <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr]">
             <div>
               <Link href="/" className="flex items-center gap-3">
-                <span className="relative block h-12 w-12 overflow-hidden rounded-full ring-1 ring-orange-400/60">
-                  <Image src="/logo.jpg" alt="Ashton Royal Living" fill className="object-cover" sizes="48px" />
+                <span className="relative block h-12 w-12">
+                  <Image src="/logo.jpg" alt="Ashton Royal Living" fill className="object-contain" sizes="48px" />
                 </span>
                 <span className="flex flex-col leading-none">
                   <span className="font-display text-xl font-semibold tracking-tight text-blue-900">

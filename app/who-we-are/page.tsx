@@ -69,7 +69,7 @@ export default function WhoWeAre() {
             <Reveal delay={0.2}>
               <div className="mt-8 flex flex-wrap gap-3">
                 {["Veterans", "Seniors", "Sober Living", "Independent Adults"].map((t) => (
-                  <span key={t} className="rounded-full border border-blue-700/15 bg-white/60 px-4 py-2 text-sm font-medium text-blue-800">
+                  <span key={t} className="rounded-full border border-blue-700/15 bg-white/60 px-4 py-2 text-sm font-medium text-blue-800 dark:bg-white/[0.06]">
                     {t}
                   </span>
                 ))}

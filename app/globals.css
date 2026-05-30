@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
+/* Enable class-based dark mode (toggled on <html class="dark">) */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
+  --page-bg: #eef3fa;
+
   /* Brand palette — royal blue + warm orange */
   --color-cloud: #eef3fa;
   --color-cloud-deep: #dde7f4;
@@ -34,11 +39,58 @@ html {
 }
 
 body {
-  background-color: var(--color-cloud);
+  background-color: var(--page-bg);
   color: var(--color-ink);
   font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* ===== Dark theme ===== */
+html.dark {
+  --page-bg: #0a1424;
+  --color-ink: #e9eef7;
+  --color-ink-soft: #9fb2cc;
+  --color-blue-900: #f1f5fb;
+  --color-blue-800: #cfe0f5;
+  --color-blue-700: #a9c6ec;
+  --color-cloud: #e9eef7;
+}
+
+html.dark .page-atmosphere {
+  background:
+    radial-gradient(60% 50% at 15% 8%, rgba(242, 116, 27, 0.14), transparent 60%),
+    radial-gradient(55% 45% at 92% 22%, rgba(30, 92, 192, 0.20), transparent 62%),
+    radial-gradient(70% 60% at 50% 110%, rgba(8, 26, 61, 0.55), transparent 60%),
+    linear-gradient(180deg, #0a1424 0%, #0b1830 55%, #081120 100%);
+}
+html.dark .page-atmosphere::after { opacity: 0.25; }
+
+html.dark .glass {
+  background: linear-gradient(
+    150deg,
+    rgba(28, 44, 74, 0.62),
+    rgba(18, 30, 52, 0.42)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.05) inset,
+    0 22px 48px -28px rgba(0, 0, 0, 0.7);
+}
+
+html.dark .nav-solid {
+  background: #0f1d33;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow: 0 12px 32px -18px rgba(0, 0, 0, 0.75);
+}
+
+html.dark .btn-ghost {
+  border-color: rgba(255, 255, 255, 0.18);
+}
+html.dark .btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(242, 116, 27, 0.5);
 }
 
 /* Atmospheric page background: layered orange + blue radial washes */

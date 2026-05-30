@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { NAV } from "@/lib/site";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -37,8 +38,8 @@ export function Nav() {
         }`}
       >
         <Link href="/" className="flex items-center gap-3 pl-1">
-          <span className="relative block h-10 w-10 overflow-hidden rounded-full ring-1 ring-orange-400/60">
-            <Image src="/logo.jpg" alt="Ashton Royal Living" fill className="object-cover" sizes="40px" />
+          <span className="relative block h-10 w-10">
+            <Image src="/logo.jpg" alt="Ashton Royal Living" fill className="object-contain" sizes="40px" />
           </span>
           <span className="hidden flex-col leading-none sm:flex">
             <span className="font-display text-[1.05rem] font-semibold tracking-tight text-blue-900">
@@ -66,6 +67,7 @@ export function Nav() {
         </ul>
 
         <div className="flex items-center gap-2">
+          <ThemeToggle />
           <Link href="/appointment" className="btn-orange hidden px-5 py-2.5 text-sm sm:inline-flex">
             Appointment
           </Link>

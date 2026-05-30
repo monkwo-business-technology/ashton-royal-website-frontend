@@ -51,7 +51,7 @@ export default function OurServices() {
                 <Reveal delay={0.15}>
                   <ul className="mt-6 flex flex-wrap gap-3">
                     {s.points.map((p) => (
-                      <li key={p} className="flex items-center gap-2 rounded-full border border-blue-700/15 bg-white/60 px-4 py-2 text-sm font-medium text-blue-800">
+                      <li key={p} className="flex items-center gap-2 rounded-full border border-blue-700/15 bg-white/60 px-4 py-2 text-sm font-medium text-blue-800 dark:bg-white/[0.06]">
                         <span className="grid h-4 w-4 place-items-center rounded-full bg-gradient-to-br from-orange-400 to-orange-600 text-white">
                           <svg width="9" height="9" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" /></svg>
                         </span>
@@ -79,7 +79,7 @@ export default function OurServices() {
             <Stagger amount={0.05} className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {AMENITIES.map((a) => (
                 <StaggerItem key={a}>
-                  <div className="flex items-center gap-3 rounded-2xl bg-white/55 px-4 py-3">
+                  <div className="flex items-center gap-3 rounded-2xl bg-white/55 px-4 py-3 dark:bg-white/[0.05]">
                     <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-gradient-to-br from-orange-400 to-orange-600 text-white">
                       <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M20 6 9 17l-5-5" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" /></svg>
                     </span>

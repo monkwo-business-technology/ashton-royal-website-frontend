@@ -1,0 +1,103 @@
+import Image from "next/image";
+
+const nav = [
+  { label: "Home", href: "#home" },
+  { label: "Who We Are", href: "#about" },
+  { label: "Our Services", href: "#services" },
+  { label: "Inventory", href: "#housing" },
+  { label: "Contact Us", href: "#contact" },
+];
+
+const legal = ["Privacy Policy", "Terms of Service", "FAQ", "Contact Us"];
+
+export function Footer() {
+  return (
+    <footer className="relative px-4 pb-10 pt-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="glass rounded-[2.5rem] p-9 sm:p-12">
+          <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr]">
+            <div>
+              <div className="flex items-center gap-3">
+                <span className="relative block h-12 w-12 overflow-hidden rounded-full ring-1 ring-orange-400/60">
+                  <Image src="/logo.jpg" alt="Ashton Royal Living" fill className="object-cover" sizes="48px" />
+                </span>
+                <span className="flex flex-col leading-none">
+                  <span className="font-display text-xl font-semibold tracking-tight text-blue-900">
+                    Ashton Royal Living
+                  </span>
+                  <span className="eyebrow text-[0.6rem] text-orange-600">
+                    Empowering Lives
+                  </span>
+                </span>
+              </div>
+              <p className="mt-5 max-w-sm text-[0.95rem] leading-relaxed text-ink-soft">
+                Safe and affordable communal housing for veterans, seniors, sober
+                living, and independent adults. We can&rsquo;t wait to welcome you home.
+              </p>
+              <div className="mt-6 flex flex-col gap-1">
+                <a
+                  href="tel:+18323055595"
+                  className="font-display text-lg font-semibold text-blue-900 hover:text-blue-700"
+                >
+                  1 (832) 305-5595
+                </a>
+                <a
+                  href="mailto:info@ashtonroyalliving.com"
+                  className="text-sm text-ink-soft hover:text-blue-700"
+                >
+                  info@ashtonroyalliving.com
+                </a>
+              </div>
+            </div>
+
+            <div>
+              <p className="eyebrow text-orange-600">Explore</p>
+              <ul className="mt-4 space-y-2.5">
+                {nav.map((n) => (
+                  <li key={n.href}>
+                    <a
+                      href={n.href}
+                      className="text-ink-soft transition-colors hover:text-blue-800"
+                    >
+                      {n.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div>
+              <p className="eyebrow text-orange-600">Company</p>
+              <ul className="mt-4 space-y-2.5">
+                {legal.map((l) => (
+                  <li key={l}>
+                    <a
+                      href="#"
+                      className="text-ink-soft transition-colors hover:text-blue-800"
+                    >
+                      {l}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="my-8 hairline" />
+
+          <div className="flex flex-col items-center justify-between gap-4 text-center text-sm text-ink-soft sm:flex-row sm:text-left">
+            <p>
+              &copy; {2024} Ashton Royal Living. All rights reserved.
+            </p>
+            <p>
+              Developed by{" "}
+              <span className="font-semibold text-blue-800">
+                iTechNetronics LLC
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}

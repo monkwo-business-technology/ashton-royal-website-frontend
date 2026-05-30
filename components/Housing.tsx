@@ -1,6 +1,9 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
 import { Reveal, Stagger, StaggerItem } from "./Reveal";
+import { IMAGES } from "@/lib/site";
 
 const features = [
   "No credit check — no problem",
@@ -19,9 +22,15 @@ export function Housing() {
           <div className="grid items-stretch gap-2 lg:grid-cols-2">
             {/* Visual panel */}
             <Reveal className="relative min-h-[22rem] overflow-hidden rounded-[2rem]">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900" />
-              <div className="absolute inset-0 bg-[radial-gradient(100%_70%_at_10%_10%,rgba(255,156,77,0.38),transparent_55%)]" />
-              <div className="absolute inset-0 opacity-[0.15] [background-image:linear-gradient(rgba(255,255,255,0.5)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.5)_1px,transparent_1px)] [background-size:38px_38px]" />
+              <Image
+                src={IMAGES.roomVip}
+                alt="An elegant, fully furnished VIP room at Ashton Royal Living"
+                fill
+                sizes="(max-width: 1024px) 100vw, 32rem"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/70 to-blue-900/30" />
+              <div className="absolute inset-0 bg-[radial-gradient(100%_70%_at_10%_10%,rgba(255,156,77,0.28),transparent_55%)]" />
               <div className="relative flex h-full flex-col justify-between p-9 text-cloud">
                 <span className="eyebrow text-orange-200">Inventory</span>
                 <div>
@@ -83,9 +92,9 @@ export function Housing() {
 
               <Reveal delay={0.1}>
                 <div className="mt-9 flex flex-wrap gap-4">
-                  <a href="#contact" className="btn-orange px-7 py-3.5">
-                    Join Our Community
-                  </a>
+                  <Link href="/inventory" className="btn-orange px-7 py-3.5">
+                    View Inventory
+                  </Link>
                   <a href="tel:+18323055595" className="btn-ghost px-7 py-3.5 text-blue-900">
                     Call to Tour
                   </a>

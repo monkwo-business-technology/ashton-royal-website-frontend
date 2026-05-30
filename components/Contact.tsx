@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Reveal } from "./Reveal";
 
 export function Contact() {
@@ -50,11 +51,11 @@ export function Contact() {
                   info@ashtonroyalliving.com
                 </a>
 
-                <a
-                  href="tel:+18323055595"
+                <Link
+                  href="/contact"
                   className="btn-orange mt-7 flex w-full items-center justify-center gap-2 px-6 py-4 text-base"
                 >
-                  Learn More
+                  Send us a message
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                     <path
                       d="M5 12h14M13 6l6 6-6 6"
@@ -64,7 +65,7 @@ export function Contact() {
                       strokeLinejoin="round"
                     />
                   </svg>
-                </a>
+                </Link>
                 <p className="mt-4 text-center text-xs text-ink-soft">
                   Proud to offer equal housing opportunities for all.
                 </p>

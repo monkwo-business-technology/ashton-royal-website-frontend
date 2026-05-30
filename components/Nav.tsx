@@ -2,19 +2,15 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
-
-const links = [
-  { label: "Home", href: "#home" },
-  { label: "Who We Are", href: "#about" },
-  { label: "Our Services", href: "#services" },
-  { label: "Inventory", href: "#housing" },
-  { label: "Contact Us", href: "#contact" },
-];
+import { NAV } from "@/lib/site";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -22,6 +18,11 @@ export function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => setOpen(false), [pathname]);
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <motion.header
@@ -35,7 +36,7 @@ export function Nav() {
           scrolled ? "shadow-2xl" : ""
         }`}
       >
-        <a href="#home" className="flex items-center gap-3 pl-1">
+        <Link href="/" className="flex items-center gap-3 pl-1">
           <span className="relative block h-10 w-10 overflow-hidden rounded-full ring-1 ring-orange-400/60">
             <Image src="/logo.jpg" alt="Ashton Royal Living" fill className="object-cover" sizes="40px" />
           </span>
@@ -45,27 +46,32 @@ export function Nav() {
             </span>
             <span className="eyebrow text-[0.6rem] text-orange-600">Living</span>
           </span>
-        </a>
+        </Link>
 
         <ul className="hidden items-center gap-1 lg:flex">
-          {links.map((l) => (
+          {NAV.map((l) => (
             <li key={l.href}>
-              <a
+              <Link
                 href={l.href}
-                className="rounded-full px-4 py-2 text-sm font-medium text-ink-soft transition-colors hover:bg-blue-900/[0.06] hover:text-blue-800"
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors ${
+                  isActive(l.href)
+                    ? "bg-blue-900/[0.07] text-blue-900"
+                    : "text-ink-soft hover:bg-blue-900/[0.06] hover:text-blue-800"
+                }`}
               >
                 {l.label}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
         <div className="flex items-center gap-2">
-          <a href="#contact" className="btn-orange hidden px-5 py-2.5 text-sm sm:inline-flex">
+          <Link href="/appointment" className="btn-orange hidden px-5 py-2.5 text-sm sm:inline-flex">
             Appointment
-          </a>
+          </Link>
           <button
             aria-label="Toggle menu"
+            aria-expanded={open}
             onClick={() => setOpen((v) => !v)}
             className="grid h-10 w-10 place-items-center rounded-full border border-ink/10 lg:hidden"
           >
@@ -94,25 +100,27 @@ export function Nav() {
             transition={{ duration: 0.3 }}
             className="nav-solid absolute top-[5.2rem] w-[calc(100%-2rem)] max-w-6xl space-y-1 rounded-2xl p-3 lg:hidden"
           >
-            {links.map((l) => (
+            {NAV.map((l) => (
               <li key={l.href}>
-                <a
+                <Link
                   href={l.href}
-                  onClick={() => setOpen(false)}
-                  className="block rounded-2xl px-4 py-3 font-medium text-ink-soft transition-colors hover:bg-blue-900/[0.06] hover:text-blue-800"
+                  className={`block rounded-2xl px-4 py-3 font-medium transition-colors ${
+                    isActive(l.href)
+                      ? "bg-blue-900/[0.07] text-blue-900"
+                      : "text-ink-soft hover:bg-blue-900/[0.06] hover:text-blue-800"
+                  }`}
                 >
                   {l.label}
-                </a>
+                </Link>
               </li>
             ))}
             <li>
-              <a
-                href="#contact"
-                onClick={() => setOpen(false)}
+              <Link
+                href="/appointment"
                 className="btn-orange mt-1 block px-4 py-3 text-center"
               >
                 Book an Appointment
-              </a>
+              </Link>
             </li>
           </motion.ul>
         )}

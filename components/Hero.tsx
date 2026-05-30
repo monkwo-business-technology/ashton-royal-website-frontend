@@ -1,6 +1,9 @@
 "use client";
 
 import { motion } from "motion/react";
+import Image from "next/image";
+import Link from "next/link";
+import { IMAGES } from "@/lib/site";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24, filter: "blur(6px)" },
@@ -64,12 +67,12 @@ export function Hero() {
             animate="show"
             className="mt-9 flex flex-wrap items-center gap-4"
           >
-            <a href="#contact" className="btn-orange px-7 py-3.5 text-base">
+            <Link href="/appointment" className="btn-orange px-7 py-3.5 text-base">
               Book an Appointment
-            </a>
-            <a href="#services" className="btn-ghost px-7 py-3.5 text-base text-blue-900">
+            </Link>
+            <Link href="/our-services" className="btn-ghost px-7 py-3.5 text-base text-blue-900">
               Explore Our Services
-            </a>
+            </Link>
           </motion.div>
 
           <motion.div
@@ -98,9 +101,16 @@ export function Hero() {
           className="relative mx-auto w-full max-w-md"
         >
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] border border-white/60 shadow-[0_40px_90px_-40px_rgba(8,26,61,0.6)]">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900" />
-            <div className="absolute inset-0 bg-[radial-gradient(120%_80%_at_80%_0%,rgba(255,156,77,0.4),transparent_55%)]" />
-            <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,0.4)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.4)_1px,transparent_1px)] [background-size:34px_34px]" />
+            <Image
+              src={IMAGES.caregiverSenior}
+              alt="A caregiver sharing a warm moment with a resident at Ashton Royal Living"
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 28rem"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-blue-900 via-blue-900/55 to-blue-900/10" />
+            <div className="absolute inset-0 bg-[radial-gradient(120%_80%_at_80%_0%,rgba(255,156,77,0.28),transparent_55%)]" />
             <div className="relative flex h-full flex-col justify-between p-8 text-cloud">
               <div className="flex items-center justify-between">
                 <span className="eyebrow text-orange-200">A Place to Belong</span>

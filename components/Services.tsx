@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { Reveal, Stagger, StaggerItem } from "./Reveal";
 import type { ReactNode } from "react";
 
@@ -74,9 +75,9 @@ export function Services() {
             </Reveal>
           </div>
           <Reveal delay={0.1}>
-            <a href="#contact" className="btn-ghost px-6 py-3 text-blue-900">
-              Talk to our team
-            </a>
+            <Link href="/our-services" className="btn-ghost px-6 py-3 text-blue-900">
+              View all services
+            </Link>
           </Reveal>
         </div>
 

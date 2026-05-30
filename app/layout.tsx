@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Fraunces, Manrope } from "next/font/google";
 import "./globals.css";
+import { Nav } from "@/components/Nav";
+import { Footer } from "@/components/Footer";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -44,7 +46,9 @@ export default function RootLayout({
     <html lang="en" className={`${fraunces.variable} ${manrope.variable}`}>
       <body>
         <div className="page-atmosphere" aria-hidden="true" />
+        <Nav />
         {children}
+        <Footer />
       </body>
     </html>
   );

@@ -1,14 +1,8 @@
 import Image from "next/image";
+import Link from "next/link";
+import { NAV, CONTACT } from "@/lib/site";
 
-const nav = [
-  { label: "Home", href: "#home" },
-  { label: "Who We Are", href: "#about" },
-  { label: "Our Services", href: "#services" },
-  { label: "Inventory", href: "#housing" },
-  { label: "Contact Us", href: "#contact" },
-];
-
-const legal = ["Privacy Policy", "Terms of Service", "FAQ", "Contact Us"];
+const legal = ["Privacy Policy", "Terms of Service", "FAQ", "Equal Housing"];
 
 export function Footer() {
   return (
@@ -17,7 +11,7 @@ export function Footer() {
         <div className="glass rounded-[2.5rem] p-9 sm:p-12">
           <div className="grid gap-10 lg:grid-cols-[1.4fr_1fr_1fr]">
             <div>
-              <div className="flex items-center gap-3">
+              <Link href="/" className="flex items-center gap-3">
                 <span className="relative block h-12 w-12 overflow-hidden rounded-full ring-1 ring-orange-400/60">
                   <Image src="/logo.jpg" alt="Ashton Royal Living" fill className="object-cover" sizes="48px" />
                 </span>
@@ -29,40 +23,49 @@ export function Footer() {
                     Empowering Lives
                   </span>
                 </span>
-              </div>
+              </Link>
               <p className="mt-5 max-w-sm text-[0.95rem] leading-relaxed text-ink-soft">
                 Safe and affordable communal housing for veterans, seniors, sober
                 living, and independent adults. We can&rsquo;t wait to welcome you home.
               </p>
               <div className="mt-6 flex flex-col gap-1">
                 <a
-                  href="tel:+18323055595"
+                  href={CONTACT.phoneHref}
                   className="font-display text-lg font-semibold text-blue-900 hover:text-blue-700"
                 >
-                  1 (832) 305-5595
+                  {CONTACT.phone}
                 </a>
                 <a
-                  href="mailto:info@ashtonroyalliving.com"
+                  href={CONTACT.emailHref}
                   className="text-sm text-ink-soft hover:text-blue-700"
                 >
-                  info@ashtonroyalliving.com
+                  {CONTACT.email}
                 </a>
+                <span className="text-sm text-ink-soft">{CONTACT.area}</span>
               </div>
             </div>
 
             <div>
               <p className="eyebrow text-orange-600">Explore</p>
               <ul className="mt-4 space-y-2.5">
-                {nav.map((n) => (
+                {NAV.map((n) => (
                   <li key={n.href}>
-                    <a
+                    <Link
                       href={n.href}
                       className="text-ink-soft transition-colors hover:text-blue-800"
                     >
                       {n.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
+                <li>
+                  <Link
+                    href="/appointment"
+                    className="text-ink-soft transition-colors hover:text-blue-800"
+                  >
+                    Book an Appointment
+                  </Link>
+                </li>
               </ul>
             </div>
 
@@ -71,12 +74,12 @@ export function Footer() {
               <ul className="mt-4 space-y-2.5">
                 {legal.map((l) => (
                   <li key={l}>
-                    <a
-                      href="#"
+                    <Link
+                      href="/contact"
                       className="text-ink-soft transition-colors hover:text-blue-800"
                     >
                       {l}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -86,9 +89,7 @@ export function Footer() {
           <div className="my-8 hairline" />
 
           <div className="flex flex-col items-center justify-between gap-4 text-center text-sm text-ink-soft sm:flex-row sm:text-left">
-            <p>
-              &copy; {2024} Ashton Royal Living. All rights reserved.
-            </p>
+            <p>&copy; {2024} Ashton Royal Living. All rights reserved.</p>
             <p>
               Developed by{" "}
               <span className="font-semibold text-blue-800">
